@@ -55,4 +55,5 @@ void TIM3_PWM_Init(u16 arr,u16 psc){  //TIM3 PWM初始化 arr重装载值 psc预
     TIM_OC3PreloadConfig(TIM3,TIM_OCPreload_Enable);        //使能预装载寄存器
     
     TIM_Cmd(TIM3,ENABLE);        //使能TIM3
+    TIM_SetCompare1()
 }
