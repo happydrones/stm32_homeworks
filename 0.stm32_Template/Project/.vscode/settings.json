@@ -1,0 +1,25 @@
+{
+    "files.associations": {
+        "sys_config.h": "c",
+        "delay.h": "c",
+        "1602lcd.h": "c",
+        "stdio.h": "c",
+        "encoder.h": "c",
+        "stm32f10x.h": "c",
+        "pwm.h": "c",
+        "matrix_keypad.h": "c",
+        "led.h": "c",
+        "istream": "c",
+        "limits": "c",
+        "memory": "c",
+        "streambuf": "c",
+        "cstddef": "c",
+        "string": "c",
+        "optional": "c",
+        "new": "c",
+        "functional": "c",
+        "type_traits": "c",
+        "core_cm3.h": "c",
+        "i2c.h": "c"
+    }
+}

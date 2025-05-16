@@ -1,0 +1,64 @@
+#include "flash.h"
+//#define Flash_add  0x0807F804    //最后一页（255页）：0x0807 F800 – 0x0807 FFFF  flash地址用偶数，因为存储是一两字节位单位
+
+//FLASH写入数据
+void FLASH_Write(u32 Flash_add,u16 Flash_Dat) //参数1：32位FLASH地址。参数2：16位数据
+{
+	//RCC_HSICmd(ENABLE); //打开HSI时钟
+	FLASH_Unlock();  //解锁FLASH编程擦除控制器
+	FLASH_ClearFlag(FLASH_FLAG_BSY|FLASH_FLAG_EOP|FLASH_FLAG_PGERR|FLASH_FLAG_WRPRTERR);//清除标志位
+	FLASH_ErasePage(Flash_add);     //擦除指定地址页，擦除必须以页单位，会擦除整页    
+	FLASH_ProgramHalfWord(Flash_add,Flash_Dat); //从指定页的addr地址开始写   
+	FLASH_ClearFlag(FLASH_FLAG_BSY|FLASH_FLAG_EOP|FLASH_FLAG_PGERR|FLASH_FLAG_WRPRTERR);//清除标志位
+	FLASH_Lock();    //锁定FLASH编程擦除控制器  
+}
+
+//FLASH读出数据
+u16 FLASH_Read(u32 Flash_add)      //Flash_add：32位FLASH地址。 返回值：16位数据
+{ 
+	/*
+	u16 Flash_Dat;
+	Flash_Dat = *(u16*)(Flash_add);  //从指定页的Flash_add地址读出数据
+
+	return Flash_Dat;	 
+	*/ 
+	return *(u16*)(Flash_add);     //从指定页的Flash_add地址开始读
+}
+
+
+
+//将时分秒存储到flash 中
+void Time_Write(u8 h, u8 m, u8 s)
+{
+    u32 Flash_add = 0x0807F800;  // 最后一页地址
+    // 将小时存储到高5位，分钟存储到中间6位，秒存储到低6位
+    u32 Flash_Dat = (h << 11) | (m << 5) | (s);  // 5位小时、6位分钟、6位秒数
+
+    FLASH_Write(Flash_add, Flash_Dat);  // 将数据写入指定的Flash地址
+}
+//从flash 中读取时分秒
+void Time_Read(u8 *h, u8 *m, u8 *s)
+{
+    u32 Flash_Dat = *(volatile u32*)0x0807F800;  // 从Flash读取32位数据
+
+    *h = (u8)((Flash_Dat >> 11) & 0x1F);  // 取出高5位作为小时，并转换为u8
+    *m = (u8)((Flash_Dat >> 5) & 0x3F);   // 取出中间6位作为分钟，并转换为u8
+    *s = (u8)(Flash_Dat & 0x3F);          // 取出低6位作为秒数，并转换为u8
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

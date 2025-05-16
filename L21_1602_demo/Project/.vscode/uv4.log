@@ -1,0 +1,11 @@
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'E:\microcontroller\MDKARM\software\ARM\ARMCC\Bin'
+Build target 'Target 1'
+compiling main.c...
+..\User\main.c(51): warning:  #177-D: variable "Key_Value"  was declared but never referenced
+      uint8_t Key_Value;
+..\User\main.c: 1 warning, 0 errors
+linking...
+Program Size: Code=1876 RO-data=336 RW-data=8 ZI-data=1632  
+FromELF: creating hex file...
+".\Objects\Lcd1602_demo.axf" - 0 Error(s), 1 Warning(s).
+Build Time Elapsed:  00:00:03

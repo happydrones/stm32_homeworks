@@ -1,0 +1,11 @@
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'E:\microcontroller\MDKARM\software\ARM\ARMCC\Bin'
+Build target 'Target 1'
+linking...
+.\Objects\seg_show_bywsh.axf: Error: L6218E: Undefined symbol TM1640_Start (referred from tm1640.o).
+.\Objects\seg_show_bywsh.axf: Error: L6218E: Undefined symbol TM1640_Stop (referred from tm1640.o).
+Not enough information to list image symbols.
+Not enough information to list load addresses in the image map.
+Finished: 2 information, 0 warning and 2 error messages.
+".\Objects\seg_show_bywsh.axf" - 2 Error(s), 0 Warning(s).
+Target not created.
+Build Time Elapsed:  00:00:00

@@ -1,0 +1,30 @@
+{
+    "files.associations": {
+        "sys.h": "c",
+        "led.h": "c",
+        "pwm.h": "c",
+        "key.h": "c",
+        "delay.h": "c",
+        "tm1640.h": "c",
+        "i2c.h": "c",
+        "usart.h": "c",
+        "sys_config.h": "c",
+        "stdarg.h": "c",
+        "stdlib.h": "c",
+        "matrix_keypad.h": "c",
+        "stm32f10x.h": "c",
+        "istream": "c",
+        "limits": "c",
+        "memory": "c",
+        "streambuf": "c",
+        "cstddef": "c",
+        "string": "c",
+        "optional": "c",
+        "new": "c",
+        "functional": "c",
+        "type_traits": "c",
+        "queue": "c",
+        "encoder.h": "c",
+        "oled0561.h": "c"
+    }
+}

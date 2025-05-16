@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "sys.h": "c",
+        "led.h": "c",
+        "pwm.h": "c",
+        "key.h": "c",
+        "delay.h": "c",
+        "tm1640.h": "c"
+    }
+}

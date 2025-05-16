@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "tm1640.h": "c",
+        "1602lcd.h": "c",
+        "matrix_keypad.h": "c"
+    }
+}

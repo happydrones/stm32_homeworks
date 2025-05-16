@@ -1,0 +1,60 @@
+/**
+  ******************************************************************************
+  * @file    lcd1602.h
+  * @author  an小学生,oscarwang,wangshenghui
+  * @version V1.2.0
+  * @date    18-October-2024
+  * @brief   
+  *         
+  * 		  
+  ******************************************************************************
+  * @attention
+  * 
+  * 
+  * 3.该文件为an小学生,oscarwang,wangshenghui编写，希望尊重原作者的劳动成果，转载请注明出处。
+  ******************************************************************************
+  */
+#ifndef __LCD1602_H__
+#define __LCD1602_H__
+
+#include "sys.h" 
+
+#define Lcd_1602_GPIO_RCC     RCC_APB2Periph_GPIOB|RCC_APB2Periph_GPIOF|RCC_APB2Periph_GPIOG   //定义IO 时钟
+////位带方式驱动
+//#define RS_Lcd_1602  PFout(9)
+//#define RW_Lcd_1602  PFout(10)
+//#define E_Lcd_1602   PBout(1)
+//GPIO输出驱动方式 
+#define RS_Lcd_1602(n)        GPIO_WriteBit(RS_Lcd_1602_GPIOPORT,RS_Lcd_1602_Pin,(BitAction)(n));  //n  0 或 1  
+#define RW_Lcd_1602(n)        GPIO_WriteBit(RW_Lcd_1602_GPIOPORT,RW_Lcd_1602_Pin ,(BitAction)(n));  //n  0 或 1  
+#define E_Lcd_1602(n)        GPIO_WriteBit(E_Lcd_1602_GPIOPORT,E_Lcd_1602_Pin,(BitAction)(n));  //n  0 或 1  
+
+#define RS_Lcd_1602_GPIOPORT  GPIOF
+#define RS_Lcd_1602_Pin       GPIO_Pin_9
+
+#define RW_Lcd_1602_GPIOPORT  GPIOF
+#define RW_Lcd_1602_Pin       GPIO_Pin_10
+
+#define E_Lcd_1602_GPIOPORT   GPIOB
+#define E_Lcd_1602_Pin        GPIO_Pin_1
+
+#define LCD_1602_Data_Bus_GPIOPORT  GPIOG   
+#define LCD_1602_Data_Bus_Pin       GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3|GPIO_Pin_4|GPIO_Pin_5|GPIO_Pin_6|GPIO_Pin_7
+
+void Lcd_1602_GPIO_Config(void);
+void Is_LCD_Busy(void);  //1602液晶屏判忙函数
+void Write_Data_Lcd_1602(uint8_t Data_Dat);//1602液晶屏写数据函数
+void Write_Order_Lcd_1602(u8 Order_Dat);//1602液晶屏写指令函数
+void Lcd_1602_Init(void);  //1602液晶屏初始化函数
+void Display_Lcd_1602(u8 X_1602,u8 Y_1602,char *P_1602);//1602任意位置写字符串
+void Display_Lcd_1602_Number(u8 X_1602,u8 Y_1602,u32 Number,u8 Count_1602);//1602任意位置写字十进制数
+/***********************************************************************/
+
+
+
+
+
+
+
+
+#endif

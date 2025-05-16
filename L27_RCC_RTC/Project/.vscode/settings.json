@@ -1,0 +1,25 @@
+{
+    "files.associations": {
+        "stm32f10x.h": "c",
+        "led.h": "c",
+        "queue": "c",
+        "rtc.h": "c",
+        "stm32f10x_sdio.h": "c",
+        "delay.h": "c",
+        "sys_config.h": "c",
+        "istream": "c",
+        "limits": "c",
+        "memory": "c",
+        "streambuf": "c",
+        "cstddef": "c",
+        "string": "c",
+        "optional": "c",
+        "new": "c",
+        "functional": "c",
+        "type_traits": "c",
+        "keyscan_4x4.h": "c",
+        "matrix_keypad.h": "c",
+        "1602lcd.h": "c",
+        "stdio.h": "c"
+    }
+}
