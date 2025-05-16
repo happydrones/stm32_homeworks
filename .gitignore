@@ -1,0 +1,13 @@
+# 编译产物
+*.o
+*.axf
+build/
+
+# VS Code
+.vscode/
+
+# Keil/STM32CubeMX 临时文件
+*.uvprojx
+*.uvoptx
+*.uvguix.*
+
