@@ -1,6 +1,9 @@
 # 编译产物
 *.o
 *.axf
+*.d
+#ignore file end with .crf
+*.crf
 build/
 
 # VS Code

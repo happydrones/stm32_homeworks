@@ -1,20 +1,5 @@
 
 
-/*
-//杜洋工作室出品
-//洋桃系列开发板应用程序
-//关注微信公众号：洋桃电子
-//洋桃开发板资料下载 www.DoYoung.net/YT 
-//即可免费看所有教学视频，下载技术资料，技术疑难提问
-//更多内容尽在 杜洋工作室主页 www.doyoung.net
-*/
-
-/*
-《修改日志》
-1- 创建。
-
-
-*/
 
 
 
@@ -55,5 +40,4 @@ void TIM3_PWM_Init(u16 arr,u16 psc){  //TIM3 PWM初始化 arr重装载值 psc预
     TIM_OC3PreloadConfig(TIM3,TIM_OCPreload_Enable);        //使能预装载寄存器
     
     TIM_Cmd(TIM3,ENABLE);        //使能TIM3
-    TIM_SetCompare1()
 }
