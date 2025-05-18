@@ -29,7 +29,7 @@
   * @param  None
   * @retval None
   */
-void Lcd_1602_GPIO_Config(void)
+static void Lcd_1602_GPIO_Config(void)
 {
     GPIO_InitTypeDef  IO_Init;   
     RCC_APB2PeriphClockCmd(Lcd_1602_GPIO_RCC, ENABLE);//启动APB2总线 GPIO

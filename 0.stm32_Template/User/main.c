@@ -31,39 +31,33 @@
 #include "1602lcd.h"
 #include "rtc.h"
 #include "timer.h"
+#include  "software_spi_oled.h"
 
-uint8_t max_same_char(const volatile  char * s);
+uint16_t cnt;
 
-//创建一个联合体union
-union memmory
-{
-	uint32_t number;
-	uint8_t  a;
-
-};
-
-
-uint8_t long_int8;
-long     long_long;
-char a[] = "hello";
-uint32_t number =12345678;
-uint32_t reverse=0;
-char test_string[] = "abbcbbb";
 
 int main(void)
 {
 	RCC_Configuration();
-	Keypad_Init();
-	USART1_Init(115200);
-	timer3_init();
+	/*
+	//初始化一定要等RCC配置完成之后才会生效，
+	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable, ENABLE); // 关闭 JTAG，仅保留 SWD（调试仍可用）
+	PWM_GPIO_Init();
+	//生成50hz的占空比为50hz的方波
+	TIM2_PWM_Init(200, 7200);
+	*/
+	Lcd_1602_Init();
+	OLED_Init();
+	OLED_ColorTurn(0);
+	OLED_DisplayTurn(0);
 
 	while(1)	
 	{
-		if (1 == timer_flag)
-		{
-			printf("timer interrupt\n");
-			timer_flag = 0;
-		}	
+		OLED_ShowChinese(8,16,"dfdfffdsf",16);
+		
+
+		
+
 	}
 }
 

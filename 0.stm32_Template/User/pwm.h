@@ -5,4 +5,6 @@
 
 void GPIO_Out_PWM(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin,u16 PWM_f,u16 PWM_Duty);
 void GPIO_Out_Speet_Test(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin); //该函数临时测试stm32 gpio翻转极限速度用
+void TIM2_PWM_Init(uint16_t Auto_reload_value, uint16_t Prescaler);
+void PWM_GPIO_Init(void);
 #endif

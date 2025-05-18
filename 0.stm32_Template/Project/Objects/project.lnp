@@ -41,6 +41,8 @@
 ".\objects\rtc.o"
 ".\objects\ytpwm.o"
 ".\objects\timer.o"
+".\objects\pid.o"
+".\objects\software_spi_oled.o"
 --strict --scatter ".\Objects\project.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

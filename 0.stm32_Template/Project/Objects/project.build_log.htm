@@ -21,16 +21,24 @@ Target DLL:      Segger\JL2CM3.dll V2.99.44.0
 Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
-H:\1stm32_homeworks\0.stm32_Template\Project\project.uvprojx
-Project File Date:  05/17/2025
+h:\1stm32_homeworks\0.stm32_Template\Project\project.uvprojx
+Project File Date:  05/18/2025
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'E:\microcontroller\MDKARM\software\ARM\ARMCC\Bin'
 Build target 'Target 1'
+compiling main.c...
+..\User\main.c(56): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "u8"
+  		OLED_ShowChinese(8,16,"dfdfffdsf",16);
+..\User\main.c: 1 warning, 0 errors
+compiling software_spi_oled.c...
+..\User\software_spi_oled.c(137): warning:  #177-D: variable "y0"  was declared but never referenced
+  	u8 i,k,k1,k2,y0;
+..\User\software_spi_oled.c: 1 warning, 0 errors
 linking...
-Program Size: Code=5436 RO-data=356 RW-data=36 ZI-data=1868  
+Program Size: Code=4740 RO-data=336 RW-data=5196 ZI-data=3020  
 FromELF: creating hex file...
-".\Objects\project.axf" - 0 Error(s), 0 Warning(s).
+".\Objects\project.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 
