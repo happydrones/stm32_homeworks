@@ -73,8 +73,9 @@
 
 
 
-void NVIC_Configuration(void); //嵌套中断控制器的设置
+
 void RCC_Configuration(void); //RCC时钟类的设置
+void NVIC_Configuration(void); //嵌套中断控制器的设置
 static void NVIC_Config(void); /* 主要是配置中断源的优先级与打开使能中断通道 */
 void PC_PA_13_14_15_Gpio(void); //PC13,14,15作为正常的IO口,配置GPIO
 
