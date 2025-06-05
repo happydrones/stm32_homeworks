@@ -10,7 +10,7 @@ build/
 .vscode/
 
 # Keil/STM32CubeMX 临时文件
-*.uvprojx
-*.uvoptx
-*.uvguix.*
+!*.uvprojx
+!*.uvoptx
+!*.uvguix.*
 
