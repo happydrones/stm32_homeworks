@@ -31,35 +31,58 @@
 #include "1602lcd.h"
 #include "rtc.h"
 #include "timer.h"
-#include  "software_spi_oled.h"
+#include "adc.h"
+#include "encoder.h"
+
 
 uint16_t cnt;
-
+uint8_t  pwm=30;
+uint8_t  get_keypad_value;
+uint16_t current_speed;
 
 int main(void)
 {
 	RCC_Configuration();
-	/*
-	//初始化一定要等RCC配置完成之后才会生效，
-	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable, ENABLE); // 关闭 JTAG，仅保留 SWD（调试仍可用）
-	PWM_GPIO_Init();
-	//生成50hz的占空比为50hz的方波
-	TIM2_PWM_Init(200, 7200);
-	*/
+    USART1_Init(115200);
 	Lcd_1602_Init();
-	OLED_Init();
-	OLED_ColorTurn(0);
-	OLED_DisplayTurn(0);
-
+	Display_Lcd_1602_Number(1,1,pwm,3);
+	PWM_GPIO_Init();
+	TIM2_PWM_Init(200 , 7200 , pwm);
+	TIM4_InputCapture_Init();
+	Keypad_Init();
 	while(1)	
 	{
-		OLED_ShowChinese(8,16,"dfdfffdsf",16);
-		
-
-		
+		get_keypad_value = Key_Value;
+		Key_Value = 0;
+		if(4 == get_keypad_value )
+        {
+            pwm = (pwm + 1 > 100) ? 100 : pwm + 1;
+            Display_Lcd_1602_Number(1,1,pwm,3);
+            TIM_SetCompare1(TIM2, pwm);  // 更新 PWM
+        }
+        else if(12 == get_keypad_value )
+        {
+            pwm = (pwm -  1 < 0) ? 0 : pwm - 1;
+            Display_Lcd_1602_Number(1,1,pwm,3);
+            TIM_SetCompare1(TIM2, pwm);  // 更新 PWM
+        }
+       // current_speed = (ic_rise -ic_fall);
+        //Display_Lcd_1602_Number(2,1,current_speed,6);
 
 	}
 }
 
 
 
+
+float get_speed(uint16_t ic_rise, uint16_t ic_fall)
+{
+    float speed;
+    //首先末次计数时间脉冲值-初始计数时间脉冲值，即可获得旋转n个脉冲所需的时间
+    // 然后n个脉冲对应rad =n * 分度数 
+    // 轮胎所走的距离是  rad * 2 * π * 轮胎半径
+    // 速度v = 距离/时间 = 2 * π * 轮胎半径 * n * 分度数 / (ccR脉冲数*脉冲周期)
+    // 单位：m/s
+    speed = (ic_rise - ic_fall) * 1000.0 / 20.0;
+	return speed;
+}
