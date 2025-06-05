@@ -1,16 +1,40 @@
-# 编译产物
-*.o
+# -----------------------------------------------------------------------------
+# Keil MDK-ARM project - Git Ignore Template
+# Purpose: Track all source/config files, ignore intermediate build output
+# -----------------------------------------------------------------------------
+# Build output / temporary files
 *.axf
+*.elf
+#*.hex
+*.bin
+*.lst
+*.map
+*.o
 *.d
-#ignore file end with .crf
+*.dep
+*.crf
+*.sct
+*.tra
+*.plg
+*.bak
+*.log
+*.iex
+*.lnp
+*.tmp
+
+#Listings / reports / debug output
+*.htm
+*.uvtmp
+*.uvguix.*
+*.dbgconf
 *.crf
 build/
 
 # VS Code
 .vscode/
-
-# Keil/STM32CubeMX 临时文件
+#Keep project source and congfig files
 !*.uvprojx
 !*.uvoptx
-!*.uvguix.*
+!*.c
+!*.h
 
