@@ -29,7 +29,6 @@
 ".\objects\delay.o"
 ".\objects\pwm.o"
 ".\objects\led.o"
-".\objects\matrix_kaypad.o"
 ".\objects\sys_config.o"
 ".\objects\encoder.o"
 ".\objects\1602lcd.o"
@@ -43,6 +42,9 @@
 ".\objects\timer.o"
 ".\objects\pid.o"
 ".\objects\software_spi_oled.o"
+".\objects\hardware_spi_oled.o"
+".\objects\adc.o"
+".\objects\matrix_keypad.o"
 --strict --scatter ".\Objects\project.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

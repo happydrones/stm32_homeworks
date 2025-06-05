@@ -699,7 +699,7 @@ I (..\Lib\inc\stm32f10x_tim.h)(0x680E3C1F)
 I (..\Lib\inc\stm32f10x_usart.h)(0x680E3C1F)
 I (..\Lib\inc\misc.h)(0x680E3C1F)
 F (..\Startup\startup_stm32f10x_hd.s)(0x559784E0)(--cpu Cortex-M3 -g --apcs=interwork -IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include--pd "__UVISION_VERSION SETA 540" --pd "STM32F10X_HD SETA 1"--list .\listings\startup_stm32f10x_hd.lst --xref -o .\objects\startup_stm32f10x_hd.o --depend .\objects\startup_stm32f10x_hd.d)
-F (..\User\main.c)(0x682982DD)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (..\User\main.c)(0x6836AB1E)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (..\CMSIS\stm32f10x.h)(0x680E3C1F)
 I (..\CMSIS\core_cm3.h)(0x680E3C1F)
 I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
@@ -728,13 +728,13 @@ I (..\Lib\inc\stm32f10x_tim.h)(0x680E3C1F)
 I (..\Lib\inc\stm32f10x_usart.h)(0x680E3C1F)
 I (..\Lib\inc\stm32f10x_wwdg.h)(0x680E3C1F)
 I (..\Lib\inc\misc.h)(0x680E3C1F)
-I (..\User\delay.h)(0x682613DF)
-I (..\User\pwm.h)(0x68283F5B)
-I (..\User\matrix_keypad.h)(0x680F8705)
+I (..\User\delay.h)(0x68411B7E)
+I (..\User\pwm.h)(0x682EE580)
+I (..\User\matrix_keypad.h)(0x68413684)
 I (..\User\led.h)(0x671EFB21)
-I (..\User\sys_config.h)(0x680A6C0C)
-I (..\User\i2c.h)(0x680E4850)
-I (..\User\oled0561.h)(0x6818AB91)
+I (..\User\sys_config.h)(0x682F27EE)
+I (..\User\i2c.h)(0x682A0654)
+I (..\User\oled0561.h)(0x682A0BFB)
 I (..\User\usart.h)(0x681DA66E)
 I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdarg.h)(0x5E8E3CC2)
 I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdlib.h)(0x5E8E3CC2)
@@ -742,10 +742,11 @@ I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\string.h)(0x5E8E3CC2)
 I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdio.h)(0x5E8E3CC2)
 I (..\User\1602lcd.h)(0x680A9187)
 I (..\User\rtc.h)(0x6823778F)
-I (..\User\timer.h)(0x6827F841)
-I (..\User\software_spi_oled.h)(0x68298457)
-F (..\User\delay.c)(0x681C8C38)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\delay.o --omf_browse .\objects\delay.crf --depend .\objects\delay.d)
-I (..\User\delay.h)(0x682613DF)
+I (..\User\timer.h)(0x683297B3)
+I (..\User\adc.h)(0x682A84B4)
+I (..\User\encoder.h)(0x682FF166)
+F (..\User\delay.c)(0x68411B6B)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\delay.o --omf_browse .\objects\delay.crf --depend .\objects\delay.d)
+I (..\User\delay.h)(0x68411B7E)
 I (..\CMSIS\stm32f10x.h)(0x680E3C1F)
 I (..\CMSIS\core_cm3.h)(0x680E3C1F)
 I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
@@ -774,8 +775,8 @@ I (..\Lib\inc\stm32f10x_tim.h)(0x680E3C1F)
 I (..\Lib\inc\stm32f10x_usart.h)(0x680E3C1F)
 I (..\Lib\inc\stm32f10x_wwdg.h)(0x680E3C1F)
 I (..\Lib\inc\misc.h)(0x680E3C1F)
-F (..\User\pwm.c)(0x6828661A)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\pwm.o --omf_browse .\objects\pwm.crf --depend .\objects\pwm.d)
-I (..\User\pwm.h)(0x68283F5B)
+F (..\User\pwm.c)(0x68396627)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\pwm.o --omf_browse .\objects\pwm.crf --depend .\objects\pwm.d)
+I (..\User\pwm.h)(0x682EE580)
 I (..\CMSIS\stm32f10x.h)(0x680E3C1F)
 I (..\CMSIS\core_cm3.h)(0x680E3C1F)
 I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
@@ -805,7 +806,7 @@ I (..\Lib\inc\stm32f10x_usart.h)(0x680E3C1F)
 I (..\Lib\inc\stm32f10x_wwdg.h)(0x680E3C1F)
 I (..\Lib\inc\misc.h)(0x680E3C1F)
 I (..\User\led.h)(0x671EFB21)
-I (..\User\delay.h)(0x682613DF)
+I (..\User\delay.h)(0x68411B7E)
 F (..\User\led.c)(0x682613DF)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\led.o --omf_browse .\objects\led.crf --depend .\objects\led.d)
 I (..\User\led.h)(0x671EFB21)
 I (..\CMSIS\stm32f10x.h)(0x680E3C1F)
@@ -836,10 +837,10 @@ I (..\Lib\inc\stm32f10x_tim.h)(0x680E3C1F)
 I (..\Lib\inc\stm32f10x_usart.h)(0x680E3C1F)
 I (..\Lib\inc\stm32f10x_wwdg.h)(0x680E3C1F)
 I (..\Lib\inc\misc.h)(0x680E3C1F)
-I (..\User\sys_config.h)(0x680A6C0C)
-I (..\User\delay.h)(0x682613DF)
-F (..\User\matrix_kaypad.c)(0x682613DF)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\matrix_kaypad.o --omf_browse .\objects\matrix_kaypad.crf --depend .\objects\matrix_kaypad.d)
-I (..\User\matrix_keypad.h)(0x680F8705)
+I (..\User\sys_config.h)(0x682F27EE)
+I (..\User\delay.h)(0x68411B7E)
+F (..\User\sys_config.c)(0x682F27EB)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\sys_config.o --omf_browse .\objects\sys_config.crf --depend .\objects\sys_config.d)
+I (..\User\sys_config.h)(0x682F27EE)
 I (..\CMSIS\stm32f10x.h)(0x680E3C1F)
 I (..\CMSIS\core_cm3.h)(0x680E3C1F)
 I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
@@ -868,9 +869,8 @@ I (..\Lib\inc\stm32f10x_tim.h)(0x680E3C1F)
 I (..\Lib\inc\stm32f10x_usart.h)(0x680E3C1F)
 I (..\Lib\inc\stm32f10x_wwdg.h)(0x680E3C1F)
 I (..\Lib\inc\misc.h)(0x680E3C1F)
-I (..\User\delay.h)(0x682613DF)
-F (..\User\sys_config.c)(0x682613E0)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\sys_config.o --omf_browse .\objects\sys_config.crf --depend .\objects\sys_config.d)
-I (..\User\sys_config.h)(0x680A6C0C)
+F (..\User\encoder.c)(0x682F4E7C)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\encoder.o --omf_browse .\objects\encoder.crf --depend .\objects\encoder.d)
+I (..\User\encoder.h)(0x682FF166)
 I (..\CMSIS\stm32f10x.h)(0x680E3C1F)
 I (..\CMSIS\core_cm3.h)(0x680E3C1F)
 I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
@@ -899,41 +899,10 @@ I (..\Lib\inc\stm32f10x_tim.h)(0x680E3C1F)
 I (..\Lib\inc\stm32f10x_usart.h)(0x680E3C1F)
 I (..\Lib\inc\stm32f10x_wwdg.h)(0x680E3C1F)
 I (..\Lib\inc\misc.h)(0x680E3C1F)
-F (..\User\encoder.c)(0x682613DF)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\encoder.o --omf_browse .\objects\encoder.crf --depend .\objects\encoder.d)
-I (..\User\encoder.h)(0x67715548)
-I (..\User\sys_config.h)(0x680A6C0C)
-I (..\CMSIS\stm32f10x.h)(0x680E3C1F)
-I (..\CMSIS\core_cm3.h)(0x680E3C1F)
-I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
-I (..\CMSIS\system_stm32f10x.h)(0x680E3C1F)
-I (..\User\stm32f10x_conf.h)(0x682613E0)
-I (..\Lib\inc\stm32f10x_adc.h)(0x680E3C1F)
-I (..\Lib\inc\stm32f10x_bkp.h)(0x680E3C1F)
-I (..\Lib\inc\stm32f10x_can.h)(0x680E3C1F)
-I (..\Lib\inc\stm32f10x_cec.h)(0x680E3C1F)
-I (..\Lib\inc\stm32f10x_crc.h)(0x680E3C1F)
-I (..\Lib\inc\stm32f10x_dac.h)(0x680E3C1F)
-I (..\Lib\inc\stm32f10x_dbgmcu.h)(0x680E3C1F)
-I (..\Lib\inc\stm32f10x_dma.h)(0x680E3C1F)
-I (..\Lib\inc\stm32f10x_exti.h)(0x680E3C1F)
-I (..\Lib\inc\stm32f10x_flash.h)(0x680E3C1F)
-I (..\Lib\inc\stm32f10x_fsmc.h)(0x680E3C1F)
-I (..\Lib\inc\stm32f10x_gpio.h)(0x680E3C1F)
-I (..\Lib\inc\stm32f10x_i2c.h)(0x680E3C1F)
-I (..\Lib\inc\stm32f10x_iwdg.h)(0x680E3C1F)
-I (..\Lib\inc\stm32f10x_pwr.h)(0x680E3C1F)
-I (..\Lib\inc\stm32f10x_rcc.h)(0x680E3C1F)
-I (..\Lib\inc\stm32f10x_rtc.h)(0x680E3C1F)
-I (..\Lib\inc\stm32f10x_sdio.h)(0x680E3C1F)
-I (..\Lib\inc\stm32f10x_spi.h)(0x680E3C1F)
-I (..\Lib\inc\stm32f10x_tim.h)(0x680E3C1F)
-I (..\Lib\inc\stm32f10x_usart.h)(0x680E3C1F)
-I (..\Lib\inc\stm32f10x_wwdg.h)(0x680E3C1F)
-I (..\Lib\inc\misc.h)(0x680E3C1F)
-I (..\User\delay.h)(0x682613DF)
-F (..\User\1602lcd.c)(0x68286525)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\1602lcd.o --omf_browse .\objects\1602lcd.crf --depend .\objects\1602lcd.d)
+I (..\User\delay.h)(0x68411B7E)
+F (..\User\1602lcd.c)(0x682EFCAB)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\1602lcd.o --omf_browse .\objects\1602lcd.crf --depend .\objects\1602lcd.d)
 I (..\User\1602lcd.h)(0x680A9187)
-I (..\User\sys_config.h)(0x680A6C0C)
+I (..\User\sys_config.h)(0x682F27EE)
 I (..\CMSIS\stm32f10x.h)(0x680E3C1F)
 I (..\CMSIS\core_cm3.h)(0x680E3C1F)
 I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
@@ -962,7 +931,7 @@ I (..\Lib\inc\stm32f10x_tim.h)(0x680E3C1F)
 I (..\Lib\inc\stm32f10x_usart.h)(0x680E3C1F)
 I (..\Lib\inc\stm32f10x_wwdg.h)(0x680E3C1F)
 I (..\Lib\inc\misc.h)(0x680E3C1F)
-I (..\User\delay.h)(0x682613DF)
+I (..\User\delay.h)(0x68411B7E)
 I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdio.h)(0x5E8E3CC2)
 F (..\User\flash.c)(0x677690ED)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\flash.o --omf_browse .\objects\flash.crf --depend .\objects\flash.d)
 I (..\User\flash.h)(0x682613DF)
@@ -994,9 +963,9 @@ I (..\Lib\inc\stm32f10x_tim.h)(0x680E3C1F)
 I (..\Lib\inc\stm32f10x_usart.h)(0x680E3C1F)
 I (..\Lib\inc\stm32f10x_wwdg.h)(0x680E3C1F)
 I (..\Lib\inc\misc.h)(0x680E3C1F)
-F (..\User\oled0561.c)(0x68282A67)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\oled0561.o --omf_browse .\objects\oled0561.crf --depend .\objects\oled0561.d)
-I (..\User\oled0561.h)(0x6818AB91)
-I (..\User\sys_config.h)(0x680A6C0C)
+F (..\User\oled0561.c)(0x682A0C81)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\oled0561.o --omf_browse .\objects\oled0561.crf --depend .\objects\oled0561.d)
+I (..\User\oled0561.h)(0x682A0BFB)
+I (..\User\sys_config.h)(0x682F27EE)
 I (..\CMSIS\stm32f10x.h)(0x680E3C1F)
 I (..\CMSIS\core_cm3.h)(0x680E3C1F)
 I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
@@ -1025,11 +994,11 @@ I (..\Lib\inc\stm32f10x_tim.h)(0x680E3C1F)
 I (..\Lib\inc\stm32f10x_usart.h)(0x680E3C1F)
 I (..\Lib\inc\stm32f10x_wwdg.h)(0x680E3C1F)
 I (..\Lib\inc\misc.h)(0x680E3C1F)
-I (..\User\i2c.h)(0x680E4850)
-I (..\User\ASCII_8x16.h)(0x680E3ABE)
-F (..\User\i2c.c)(0x682613FD)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\i2c.o --omf_browse .\objects\i2c.crf --depend .\objects\i2c.d)
-I (..\User\i2c.h)(0x680E4850)
-I (..\User\sys_config.h)(0x680A6C0C)
+I (..\User\i2c.h)(0x682A0654)
+I (..\User\ASC2_8x16.h)(0x682A0C2F)
+F (..\User\i2c.c)(0x682A063E)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\i2c.o --omf_browse .\objects\i2c.crf --depend .\objects\i2c.d)
+I (..\User\i2c.h)(0x682A0654)
+I (..\User\sys_config.h)(0x682F27EE)
 I (..\CMSIS\stm32f10x.h)(0x680E3C1F)
 I (..\CMSIS\core_cm3.h)(0x680E3C1F)
 I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
@@ -1064,7 +1033,7 @@ I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdarg.h)(0x5E8E3CC2)
 I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdlib.h)(0x5E8E3CC2)
 I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\string.h)(0x5E8E3CC2)
 I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdio.h)(0x5E8E3CC2)
-I (..\User\sys_config.h)(0x680A6C0C)
+I (..\User\sys_config.h)(0x682F27EE)
 I (..\CMSIS\stm32f10x.h)(0x680E3C1F)
 I (..\CMSIS\core_cm3.h)(0x680E3C1F)
 I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
@@ -1127,7 +1096,7 @@ I (..\Lib\inc\stm32f10x_wwdg.h)(0x680E3C1F)
 I (..\Lib\inc\misc.h)(0x680E3C1F)
 F (..\User\ytpwm.c)(0x68278063)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\ytpwm.o --omf_browse .\objects\ytpwm.crf --depend .\objects\ytpwm.d)
 I (..\User\ytpwm.h)(0x6826143C)
-I (..\User\sys_config.h)(0x680A6C0C)
+I (..\User\sys_config.h)(0x682F27EE)
 I (..\CMSIS\stm32f10x.h)(0x680E3C1F)
 I (..\CMSIS\core_cm3.h)(0x680E3C1F)
 I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
@@ -1156,8 +1125,8 @@ I (..\Lib\inc\stm32f10x_tim.h)(0x680E3C1F)
 I (..\Lib\inc\stm32f10x_usart.h)(0x680E3C1F)
 I (..\Lib\inc\stm32f10x_wwdg.h)(0x680E3C1F)
 I (..\Lib\inc\misc.h)(0x680E3C1F)
-F (..\User\timer.c)(0x68282247)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\timer.o --omf_browse .\objects\timer.crf --depend .\objects\timer.d)
-I (..\User\timer.h)(0x6827F841)
+F (..\User\timer.c)(0x68388118)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\timer.o --omf_browse .\objects\timer.crf --depend .\objects\timer.d)
+I (..\User\timer.h)(0x683297B3)
 I (..\CMSIS\stm32f10x.h)(0x680E3C1F)
 I (..\CMSIS\core_cm3.h)(0x680E3C1F)
 I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
@@ -1190,9 +1159,9 @@ F (..\User\pid.c)(0x6827F59A)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=inter
 I (..\User\pid.h)(0x6827F59A)
 I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
 I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\string.h)(0x5E8E3CC2)
-F (..\User\software_spi_oled.c)(0x68297F88)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\software_spi_oled.o --omf_browse .\objects\software_spi_oled.crf --depend .\objects\software_spi_oled.d)
-I (..\User\software_spi_oled.h)(0x68298457)
-I (..\User\sys_config.h)(0x680A6C0C)
+F (..\User\software_spi_oled.c)(0x682A099A)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\software_spi_oled.o --omf_browse .\objects\software_spi_oled.crf --depend .\objects\software_spi_oled.d)
+I (..\User\software_spi_oled.h)(0x68299850)
+I (..\User\sys_config.h)(0x682F27EE)
 I (..\CMSIS\stm32f10x.h)(0x680E3C1F)
 I (..\CMSIS\core_cm3.h)(0x680E3C1F)
 I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
@@ -1223,4 +1192,95 @@ I (..\Lib\inc\stm32f10x_wwdg.h)(0x680E3C1F)
 I (..\Lib\inc\misc.h)(0x680E3C1F)
 I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdlib.h)(0x5E8E3CC2)
 I (..\User\oledfont.h)(0x68295A2E)
-I (..\User\delay.h)(0x682613DF)
+I (..\User\delay.h)(0x68411B7E)
+F (..\User\Hardware_SPI_OLED.c)(0x682A06EE)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\hardware_spi_oled.o --omf_browse .\objects\hardware_spi_oled.crf --depend .\objects\hardware_spi_oled.d)
+I (..\User\Hardware_SPI_OLED.h)(0x6829F4DF)
+I (..\CMSIS\stm32f10x.h)(0x680E3C1F)
+I (..\CMSIS\core_cm3.h)(0x680E3C1F)
+I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
+I (..\CMSIS\system_stm32f10x.h)(0x680E3C1F)
+I (..\User\stm32f10x_conf.h)(0x682613E0)
+I (..\Lib\inc\stm32f10x_adc.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_bkp.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_can.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_cec.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_crc.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_dac.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_dbgmcu.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_dma.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_exti.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_flash.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_fsmc.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_gpio.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_i2c.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_iwdg.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_pwr.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_rcc.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_rtc.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_sdio.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_spi.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_tim.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_usart.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_wwdg.h)(0x680E3C1F)
+I (..\Lib\inc\misc.h)(0x680E3C1F)
+F (..\User\adc.c)(0x682AB7C0)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\adc.o --omf_browse .\objects\adc.crf --depend .\objects\adc.d)
+I (..\User\adc.h)(0x682A84B4)
+I (..\CMSIS\stm32f10x.h)(0x680E3C1F)
+I (..\CMSIS\core_cm3.h)(0x680E3C1F)
+I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
+I (..\CMSIS\system_stm32f10x.h)(0x680E3C1F)
+I (..\User\stm32f10x_conf.h)(0x682613E0)
+I (..\Lib\inc\stm32f10x_adc.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_bkp.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_can.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_cec.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_crc.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_dac.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_dbgmcu.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_dma.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_exti.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_flash.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_fsmc.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_gpio.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_i2c.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_iwdg.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_pwr.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_rcc.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_rtc.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_sdio.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_spi.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_tim.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_usart.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_wwdg.h)(0x680E3C1F)
+I (..\Lib\inc\misc.h)(0x680E3C1F)
+F (..\User\matrix_keypad.c)(0x684135D2)(--c99 --gnu -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Lib\inc -I ..\Lib\src -I ..\Startup -I ..\User-IE:\microcontroller\MDKARM\pack\Keil\STM32F1xx_DFP\2.4.1\Device\Include-D__UVISION_VERSION="540" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o .\objects\matrix_keypad.o --omf_browse .\objects\matrix_keypad.crf --depend .\objects\matrix_keypad.d)
+I (..\User\matrix_keypad.h)(0x68413684)
+I (..\CMSIS\stm32f10x.h)(0x680E3C1F)
+I (..\CMSIS\core_cm3.h)(0x680E3C1F)
+I (E:\microcontroller\MDKARM\software\ARM\ARMCC\include\stdint.h)(0x5E8E3CC2)
+I (..\CMSIS\system_stm32f10x.h)(0x680E3C1F)
+I (..\User\stm32f10x_conf.h)(0x682613E0)
+I (..\Lib\inc\stm32f10x_adc.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_bkp.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_can.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_cec.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_crc.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_dac.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_dbgmcu.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_dma.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_exti.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_flash.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_fsmc.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_gpio.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_i2c.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_iwdg.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_pwr.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_rcc.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_rtc.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_sdio.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_spi.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_tim.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_usart.h)(0x680E3C1F)
+I (..\Lib\inc\stm32f10x_wwdg.h)(0x680E3C1F)
+I (..\Lib\inc\misc.h)(0x680E3C1F)
+I (..\User\delay.h)(0x68411B7E)
