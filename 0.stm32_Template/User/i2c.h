@@ -10,7 +10,7 @@
 #define BusSpeed	200000	//总线速度（不高于400000）
 
 
-void I2C_Configuration(void);
+void I2C1_Configuration(void);
 void I2C_Sand_Buffer(u8 SlaveAddr, u8 WriteAddr, u8* pBuffer, u16 NumByteToWrite);
 void I2C_SAND_BYTE(u8 SlaveAddr,u8 writeAddr,u8 pBuffer);
 void I2C_READ_BUFFER(u8 SlaveAddr,u8 readAddr,u8* pBuffer,u16 NumByteToRead);

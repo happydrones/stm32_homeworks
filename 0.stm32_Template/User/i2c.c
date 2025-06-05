@@ -32,7 +32,7 @@ static void I2C_GPIO_Init(void){ //I2C接口初始化
 	GPIO_Init(I2CPORT, &GPIO_InitStructure);
 }
 
-void I2C_Configuration(void){ 								//I2C初始化
+void I2C1_Configuration(void){ 								//I2C初始化
 	I2C_InitTypeDef  I2C_InitStructure;
 	I2C_GPIO_Init(); 										//先设置GPIO接口的状态
 	I2C_InitStructure.I2C_Mode = I2C_Mode_I2C;				//设置为I2C模式
@@ -140,11 +140,6 @@ u8 I2C_READ_BYTE(u8 SlaveAddr,u8 readAddr){ //I2C读取一个字节
 }
 
 
- 
-/*********************************************************************************************
- * 杜洋工作室 www.DoYoung.net
- * 洋桃电子 www.DoYoung.net/YT 
-*********************************************************************************************/
 
 
 /*

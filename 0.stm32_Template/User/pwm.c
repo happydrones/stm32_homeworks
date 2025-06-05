@@ -35,7 +35,7 @@ void GPIO_Out_Speet_Test(GPIO_TypeDef* GPIOx,uint16_t GPIO_Pin)
 }
 
 
-
+//使用PA15作为输出
 void PWM_GPIO_Init(void)
 {
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_AFIO, ENABLE); // 开启 GPIOA 和 AFIO 时钟
@@ -49,14 +49,24 @@ void PWM_GPIO_Init(void)
     GPIO_Init(GPIOA, &GPIO_InitStructure);
 
     // 使能 TIM2 的完全重映射，使 TIM2_CH1 映射到 PA15
-    GPIO_PinRemapConfig(GPIO_FullRemap_TIM2, ENABLE);
+	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable , ENABLE);
+	GPIO_PinRemapConfig(GPIO_FullRemap_TIM2, ENABLE);
 }
 
 
 
-
-void TIM2_PWM_Init(uint16_t Auto_reload_value, uint16_t Prescaler)
+/*
+ * @brief  使用tim2作为pwm输出 同时启用重映射功能，将tim2映射到PA15上
+           Use TIM2 as PWM output and enable remapping function to map TIM2 to PA15
+ * @param  Auto_reload_value 自动重装载值
+ * @param  Prescaler 时基分频值
+ * @param  PWM 占空比
+ * @retval None
+ * @note   --version 0.1 实现基本的功能 目前来说是通过给定不同的参数可以输出不同的pwm波形了
+ * */
+void TIM2_PWM_Init(uint16_t Auto_reload_value, uint16_t Prescaler,uint8_t PWM)
 {
+    PWM_GPIO_Init();
     TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;
     TIM_OCInitTypeDef		 TIM_OCInitStructure;
 
@@ -70,8 +80,9 @@ void TIM2_PWM_Init(uint16_t Auto_reload_value, uint16_t Prescaler)
     // 输出比较配置（PWM 模式 1）
     TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
     TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
-    TIM_OCInitStructure.TIM_Pulse = Auto_reload_value / 2;  // 初始占空比 50%
+    TIM_OCInitStructure.TIM_Pulse = PWM * (Auto_reload_value/100);  // 初始占空比 50%
     TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
+    //初始化定时器2的通道1
     TIM_OC1Init(TIM2, &TIM_OCInitStructure);
 
     // 启用预装载
