@@ -1,33 +1,53 @@
-/**************************************************************************//**
- * @file     key.h
- * @brief    
- * @version  V1.0.0
- * @date     30. October 2024
- * @note
- * This file contains functions for initializing and scanning a 4x4 matrix
- * keypad connected to GPIO pins of an STM32 microcontroller. The keys can
- * be scanned to detect key presses, and the corresponding GPIO configurations
- * are set up for both input and output operations.
- * @par
- * This driver is designed to work with multiple GPIO ports (A, B, C, D, E, F, G)
- * to support flexibility in wiring the keypad to different pins of the MCU.
- * It also includes debounce logic with delays and can toggle an LED as feedback
- * when a key is pressed.
- * @par 
- *
- * @par
- * 
- *
- ******************************************************************************/
+/**
+  ******************************************************************************
+  * @file    	matrix_keypad.h
+  * @author  	oscar
+  * @version	v0.2.0   EOL: 2025-06-10
+  * @date    	2025-05-30
+  * @brief   	This file contains the driver  for a 4x4 matrix keypad 
+  *******************************************************************************
+  * @note    	This file contains  two different methods to scan the keypad:
+  *          	1. Interrupt-based method
+  *          	2. Polling-based method
+  * @version
+  * 			2025-05-01: Initial version by oscar.                v0.0.1          
+  * 			2025-04-30: using intrrupt for matrix keypad.        v0.2.0
+  * @attention
+  * 			1.make sure to select only one method to scan the keypad.
+  * 				by enable  macro INIT_KEYPAD_GPIO_PINS_WITH_INTRRUPT 
+  * 				in matrix_keypad.h file.
+  * Copyright (c) 2025-2025 oscar All rights reserved.
+  ******************************************************************************
+  */
+/*
+    
+                           COL1     COL2     COL3     COL4   
+ROW1     PC0      <——      |⚪|    |⚪|    |⚪|    |⚪|    
+        
+ROW2     PC1      <——      |⚪|    |⚪|    |⚪|    |⚪|
+        
+ROW3     PC2      <——      |⚪|    |⚪|    |⚪|    |⚪|
+
+ROW2     PC3      <——      |⚪|    |⚪|    |⚪|    |⚪|
+                             |       |        |       |  
+                            PC4      PC5     PC6     PC7
+
+*/
+
+
 #ifndef __matrix_keypad_H
 #define __matrix_keypad_H	 
 
 #include "stm32f10x.h"   
-
-#define INIT_KEYPAD_GPIO_PINS_WITH_INTRRUPT   1   //确认键盘触发方式
+/*
+ * @attention  :this macro is used to enable or disable the interrupt of the keypad pins.  
+*/
+#define INIT_KEYPAD_GPIO_PINS_WITH_INTRRUPT   1   
 
 //keypad pins
-#define LONG_PRESS_THRESHOLD    (uint8_t)(50)  //大于次值定义为长按
+//set the long press threshold
+#define LONG_PRESS_THRESHOLD    (uint8_t)(50) 
+
 #define RCC_Keypad  RCC_APB2Periph_GPIOC 
 #define GPIO_Keypad GPIOC
 #define ROW_GPIO_PORT            GPIOC 
@@ -52,6 +72,8 @@
 #define ROW3_PIN_EXTI_IRQN    EXTI2_IRQn
 #define ROW4_PIN_EXTI_IRQN    EXTI3_IRQn
 
+
+   
 //定义键盘列引脚
 #define COL1_PIN        GPIO_Pin_4
 #define COL2_PIN        GPIO_Pin_5
