@@ -6,16 +6,16 @@
 
 //-----------------OLED端口定义---------------- 
 
-#define OLED_SCLK_Clr() GPIO_ResetBits(GPIOA,GPIO_Pin_3)//SCL——>D0
+#define OLED_SCLK_Clr() GPIO_ResetBits(GPIOA,GPIO_Pin_3)//SCL——>D0  //时钟线
 #define OLED_SCLK_Set() GPIO_SetBits(GPIOA,GPIO_Pin_3)
 
-#define OLED_SDIN_Clr() GPIO_ResetBits(GPIOA,GPIO_Pin_2)//DIN——>D1
+#define OLED_SDIN_Clr() GPIO_ResetBits(GPIOA,GPIO_Pin_2)//DIN——>D1  //串行数据引线
 #define OLED_SDIN_Set() GPIO_SetBits(GPIOA,GPIO_Pin_2)
 
-#define OLED_RES_Clr() GPIO_ResetBits(GPIOA,GPIO_Pin_1)//RES——>RST
+#define OLED_RES_Clr() GPIO_ResetBits(GPIOA,GPIO_Pin_1)//RES——>RST  //复位引线
 #define OLED_RES_Set() GPIO_SetBits(GPIOA,GPIO_Pin_1)
 
-#define OLED_DC_Clr() GPIO_ResetBits(GPIOA,GPIO_Pin_0)//DC——>DC
+#define OLED_DC_Clr() GPIO_ResetBits(GPIOA,GPIO_Pin_0)//DC——>DC     //数据还是命令选择线
 #define OLED_DC_Set() GPIO_SetBits(GPIOA,GPIO_Pin_0)
 #define OLED_CMD  0	//写命令
 #define OLED_DATA 1	//写数据

@@ -3,7 +3,6 @@
 #include "stdlib.h"
 #include "oledfont.h"  	 
 #include "delay.h"
-
 u8 OLED_GRAM[144][8];
 
 //反显函数
@@ -35,25 +34,35 @@ void OLED_DisplayTurn(u8 i)
 }
 
 
+/*
+ *@brife:使用软件模拟spi发送数据到oled显示屏		
+*/
 void OLED_WR_Byte(u8 dat,u8 cmd)
-{	
-	u8 i;			  
+{
+
+	u8 i;
+	//发送数据还是命令			  
 	if(cmd)
 	{
-	  OLED_DC_Set();
+		OLED_DC_Set();
 	}
 	else
 	{
-	OLED_DC_Clr();
+		OLED_DC_Clr();
 	}
 	for(i=0;i<8;i++)
 	{
 		OLED_SCLK_Clr();
 		if(dat&0x80)
+		{
 		   OLED_SDIN_Set();
-		else 
-		   OLED_SDIN_Clr();
+		}
+		else
+		{
+			OLED_SDIN_Clr();
+		}
 		OLED_SCLK_Set();
+		//数据向左移动一位
 		dat<<=1;   
 	}				 		  
 	OLED_DC_Set();   	  
@@ -134,7 +143,7 @@ void OLED_ClearPoint(u8 x,u8 y)
 //y:0~64
 void OLED_DrawLine(u8 x1,u8 y1,u8 x2,u8 y2)
 {
-	u8 i,k,k1,k2,y0;
+	u8 i,k,k1,k2;
 	if((x2>128)||(y2>64)||(x1>x2)||(y1>y2))return;
 	if(x1==x2)    //画竖线
 	{
@@ -395,11 +404,10 @@ void OLED_Init(void)
 	GPIO_InitStructure.GPIO_Pin   =	GPIO_Pin_0| GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3 ;	 
  	GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_Out_PP; 		 //推挽输出
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;			//速度50MHz
- 	GPIO_Init(GPIOG, &GPIO_InitStructure);	  	
- 	GPIO_SetBits(GPIOG,GPIO_Pin_12);
+ 	GPIO_Init(GPIOA, &GPIO_InitStructure);	  	
 	
 	
-	
+	//开始复位，低位复位
 	OLED_RES_Clr();
 	Delay_ms(200);
 	OLED_RES_Set();
