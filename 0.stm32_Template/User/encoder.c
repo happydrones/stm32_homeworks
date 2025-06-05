@@ -44,7 +44,7 @@ u16 cou;
  * Configures the GPIO pins connected to the rotary encoder channels (A and B) 
  * and the button as input with pull-up resistors.
  */
-void ENCODER_Init(void) {
+void Encoder_GPIO_Init(void) {
     GPIO_InitTypeDef GPIO_InitStructure;
 
     // Enable the clock for the GPIO port used by the encoder
@@ -156,6 +156,9 @@ u8 ENCODER_READ(void) {
 	}
     return key_value;
 }
+
+
+
 
 
 

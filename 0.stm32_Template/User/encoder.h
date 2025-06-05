@@ -20,7 +20,7 @@
 #ifndef __ENCODER_H
 #define __ENCODER_H
 
-#include "sys_config.h"
+#include "stm32f10x.h"
 #include "delay.h"
 
 /** @defgroup Encoder_GPIO_Definitions GPIO Definitions
@@ -36,13 +36,49 @@
 
 /** @} */
 
+/** @defgroup Encoder_EXTI_Definitions 
+ * @{
+ */
+//Encoder button EXTI line and interrupt
+#define ENCODER_BUTTON_EXTI_GPIO_PORT  	      GPIOE
+#define ENCODER_BUTTON_EXTI_GPIO_RCC  		  RCC_APB2Periph_GPIOE 
+#define ENCODER_BUTTON_GPIO_PORTSOURCE        GPIO_PortSourceGPIOE
+#define ENCODER_BUTTON_EXTI_GPIO_PIN   		  GPIO_Pin_4
+#define ENCODER_BUTTON_EXTI_LINE          	  EXTI_Line4
+#define ENCODER_BUTTON_GPIO_PINSOURCE         GPIO_PinSource4
+#define ENCODER_BUTTON_EXTI_IRQN  			  EXTI4_IRQn
+//Encoder A  EXTI line and interrupt
+#define ENCODER_A_EXTI_GPIO_PORT  	          GPIOE
+#define ENCODER_A_EXTI_GPIO_RCC  		      RCC_APB2Periph_GPIOE 
+#define ENCODER_A_GPIO_PORTSOURCE             GPIO_PortSourceGPIOE
+#define ENCODER_A_EXTI_GPIO_PIN   		      GPIO_Pin_5
+#define ENCODER_A_EXTI_LINE          	      EXTI_Line5
+#define ENCODER_A_GPIO_PINSOURCE              GPIO_PinSource5
+#define ENCODER_A_EXTI_IRQN  			      EXTI9_5_IRQn
+//Encoder B  EXTI line and interrupt
+#define ENCODER_B_EXTI_GPIO_RCC  	          RCC_APB2Periph_GPIOE
+#define ENCODER_B_EXTI_GPIO_PORT  	          GPIOE
+#define ENCODER_B_GPIO_PORTSOURCE	          GPIO_PortSourceGPIOE
+#define ENCODER_B_EXTI_GPIO_PIN   	          GPIO_Pin_6
+#define ENCODER_B_EXTI_LINE                   EXTI_Line6
+#define ENCODER_B_GPIO_PINSOURCE		      GPIO_PinSource6
+#define ENCODER_B_EXTI_IRQN 			      EXTI9_5_IRQn
+/** 
+ * @} 
+*/
+
+
+
 /** @brief Global variable to store the encoder count. */
 extern volatile uint8_t encoder_count;  //fast rotation count detection
 extern volatile uint8_t long_press_flag;
 
-
-void ENCODER_Init(void);
-
+/** @defgroup Encoder_Function_Prototypes Function Prototypes
+ * @{
+ */
+void Encoder_GPIO_Init(void);
+//todo: add encoder button interrupt function
+void Encoder_EXIT_Init(void); 
 uint8_t ENCODER_READ(void);
-
+/** @} */
 #endif
