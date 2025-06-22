@@ -60,9 +60,9 @@ void Delay_10us(u16 nCount)
  */
 void Delay_ms(u16 nCount)
 {
-    for (u16 j = 0; j < nCount; j++)  ///< Outer loop controls the number of milliseconds
+    for (u16 j = 0; j < nCount; j++)  
     {    
-        for (u16 i = 0; i < 7995; i++);  ///< Inner loop controls the delay for each millisecond
+        for (u16 i = 0; i < 7995; i++);  
     } 
 }
 
@@ -89,11 +89,12 @@ void Delay_s(u16 nCount)
 void Systick_delay_us(uint32_t X_us)
 {
 	SysTick->LOAD = 72 * X_us - 1; 
+    // 清除SysTick定时器的当前值寄存器
     SysTick->VAL = 0x00;    
-    SysTick->CTRL = 0x05;     
- 
+    // 启动SysTick定时器，使用内部时钟，不中断
+    SysTick->CTRL = 0x05;      
+    // 等待定时器计数结束标志被置位
     while (!(SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk));
-    
     SysTick->CTRL = 0x00000004; /**< 关闭定时器 */
 }
 /**
