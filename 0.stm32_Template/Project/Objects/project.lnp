@@ -45,6 +45,9 @@
 ".\objects\hardware_spi_oled.o"
 ".\objects\adc.o"
 ".\objects\matrix_keypad.o"
+".\objects\test.o"
+".\objects\mywdg.o"
+".\objects\w25q128.o"
 --strict --scatter ".\Objects\project.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

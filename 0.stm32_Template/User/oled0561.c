@@ -9,9 +9,9 @@
 
 #include "ASC2_8x16.h" 	//引入字体 ASCII
 /**
- * @brief 初始化OLED0561显示屏
+ * @brief Initialize the OLED0561 display
  *
- * 该函数用于初始化OLED0561显示屏，首先关闭显示，然后清空屏幕内容，最后按照初始设置开启显示。
+ * This function initializes the OLED0561 display. It first turns off the display, clears the screen, and then sets the initial display settings.
  *
  * @param void 该函数不接受任何参数
  * @retval None 该函数没有返回值
@@ -89,6 +89,13 @@ void OLED_DISPLAY_CLEAR(void){                  //清屏操作
 
 //显示英文与数字8*16的ASCII码
 //取模大小为16*16，取模方式为“从左到右从上到下”“纵向8点下高位”
+/*
+ * @brief  Display 8x16 ASCII characters
+ *
+ * This function displays 8x16 ASCII characters on the OLED0561 screen.
+ * @param x  Column coordinate (0 to 63)
+ * @param y  Row coordinate (0 to 7)
+*/
 void OLED_DISPLAY_8x16(u8 x,u8 y, u16 w) 							     //显示汉字的列坐标（从0到63） 
 {
 	//要显示汉字的编号

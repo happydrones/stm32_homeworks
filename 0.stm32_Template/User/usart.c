@@ -62,7 +62,7 @@ USART1串口相关程序
 */
  
 #if EN_USART1   //USART1使用与屏蔽选择
-u8 USART1_RX_BUF[USART1_REC_LEN];     //接收缓冲,最大USART_REC_LEN个字节.
+u8 USART1_RX_BUF[USART1_RX_BUF_LEN];     //接收缓冲,最大USART_REC_LEN个字节.
 //接收状态
 //bit15，	接收完成标志
 //bit14，	接收到0x0d
@@ -75,12 +75,12 @@ USART1专用的printf函数
 调用方法：USART1_printf("123"); //向USART2发送字符123
 */
 void USART1_printf (char *fmt, ...){ 
-	char buffer[USART1_REC_LEN+1];  // 数据长度
+	char buffer[USART1_RX_BUF_LEN+1];  // 数据长度
 	u8 i = 0;	
 	va_list arg_ptr;
 	va_start(arg_ptr, fmt);  
-	vsnprintf(buffer, USART1_REC_LEN+1, fmt, arg_ptr);
-	while ((i < USART1_REC_LEN) && (i < strlen(buffer))){
+	vsnprintf(buffer, USART1_RX_BUF_LEN+1, fmt, arg_ptr);
+	while ((i < USART1_RX_BUF_LEN) && (i < strlen(buffer))){
         USART_SendData(USART1, (u8) buffer[i++]);
         while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET); 
 	}
@@ -187,7 +187,7 @@ void USART2_printf (char *fmt, ...){
 }
 
 
-void USART2_Init(u32 bound){ //串口1初始化并启动
+void USART2_Init(u32 bound){ //串口2初始化并启动
     //GPIO端口设置
     GPIO_InitTypeDef GPIO_InitStructure;
 	USART_InitTypeDef USART_InitStructure;
@@ -298,6 +298,79 @@ void USART3_Init(u32 BaudRate){ //USART3初始化并启动
 //串口3中断服务程序（固定的函数名不能修改）
 void USART3_IRQHandler(void){ 	
 
+} 
+#endif	
+
+
+
+#if EN_USART4   //如果使能了串口4
+u8 USART4_RX_BUF[USART4_RX_BUF_LEN];     //接收缓冲,最大USART_REC_LEN个字节.
+//接收状态
+//bit15，	接收完成标志
+//bit14，	接收到0x0d
+//bit13~0，	接收到的有效字节数目
+u16 UART4_RX_STA=0;       //接收状态标记	  
+
+/*
+USART4专用的printf函数
+调用方法：USART4_printf("123"); //向USART4发送字符123
+*/
+void USART4_printf (char *fmt, ...){ 
+	char buffer[USART4_RX_BUF_LEN+1];  // 数据长度
+	u8 i = 0;	
+	va_list arg_ptr;
+	va_start(arg_ptr, fmt);  
+	vsnprintf(buffer, USART4_RX_BUF_LEN+1, fmt, arg_ptr);
+	while ((i < USART4_RX_BUF_LEN) && (i < strlen(buffer))){
+        USART_SendData(UART4, (u8) buffer[i++]);
+        while (USART_GetFlagStatus(UART4, USART_FLAG_TC) == RESET); 
+	}
+	va_end(arg_ptr);
+}
+
+void USART4_Init(u32 BaudRate){ //USART4初始化并启动
+   GPIO_InitTypeDef GPIO_InitStructure;
+   USART_InitTypeDef USART_InitStructure;
+   NVIC_InitTypeDef NVIC_InitStructure; 
+
+   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC , ENABLE); //使能UART4所在GPIOC的时钟
+   RCC_APB1PeriphClockCmd(RCC_APB1Periph_UART4, ENABLE); //使能串口的RCC时钟
+
+   //串口使用的GPIO口配置
+   GPIO_InitStructure.GPIO_Pin = GPIO_Pin_11;			//设置USART4的RX接口是PC11
+   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;//接口模式 浮空输入
+   GPIO_Init(GPIOC, &GPIO_InitStructure);
+
+   GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;			//设置USART4的TX接口是PC10
+   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;	//输出速度50MHz
+   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;		//接口模式 复用推挽输出
+   GPIO_Init(GPIOC, &GPIO_InitStructure);
+
+   //配置串口
+   USART_InitStructure.USART_BaudRate = BaudRate;
+   USART_InitStructure.USART_WordLength = USART_WordLength_8b;//字长为8位数据格式
+   USART_InitStructure.USART_StopBits = USART_StopBits_1;//一个停止位
+   USART_InitStructure.USART_Parity = USART_Parity_No;//无奇偶校验位
+   USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;//无硬件数据流控制
+   USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;	//收发模式
+
+   USART_Init(UART4, &USART_InitStructure);//配置串口4
+   USART_ITConfig(UART4, USART_IT_RXNE, ENABLE);//使能串口接收中断  
+   //USART_ITConfig(USART3, USART_IT_TXE, ENABLE);//串口发送中断在发送数据时开启
+   USART_Cmd(UART4, ENABLE);//使能串口3
+
+   //串口中断配置
+   NVIC_PriorityGroupConfig(NVIC_PriorityGroup_0);
+   NVIC_InitStructure.NVIC_IRQChannel = UART4_IRQn;//允许USART3中断
+   NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;//中断等级
+   NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+   NVIC_Init(&NVIC_InitStructure);
+}
+
+//串口4中断服务程序（固定的函数名不能修改）
+void USART4_IRQHandler(void)
+{
+	//串口4中断
 } 
 #endif	
 

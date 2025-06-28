@@ -160,7 +160,7 @@ void EXTI_NEC_Config() /* 主要是连接EXTI与GPIO */
     /* EXTI的时钟要设置AFIO寄存器 */
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE) ;
     //配置所需端口为外部中断。
-	EXTI_InitTypeDef EXTI_InitStruct ;
+		EXTI_InitTypeDef EXTI_InitStruct ;
     /* 初始化EXTI外设 */
     /* 选择作为EXTI线的GPIO引脚 */
     GPIO_EXTILineConfig( KEY_UP_GPIO_PORTSOURCE , KEY_UP_GPIO_PINSOURCE) ;
@@ -186,7 +186,7 @@ void EXTI_NEC_Config() /* 主要是连接EXTI与GPIO */
 
 static void NVIC_Config(void) /* 主要是配置中断源的优先级与打开使能中断通道 */
 {
-	/* 配置中断优先级分组(设置抢占优先级和子优先级的分配)，在函数在misc.c */
+		/* 配置中断优先级分组(设置抢占优先级和子优先级的分配)，在函数在misc.c */
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2) ;
     //中断优先级分组为2 所以抢占优先级的范围为0~3 子优先级的范围为0~7
     //同时优先级的数字越小，优先级越高
@@ -221,13 +221,13 @@ static void NVIC_Config(void) /* 主要是配置中断源的优先级与打开�
   */
 void PC_PA_13_14_15_Gpio(void)
 {
-	//rtc作为io，需要先取消rtc备用纽扣电池配置好后再装电池或不装
+		//rtc作为io，需要先取消rtc备用纽扣电池配置好后再装电池或不装
     RCC_APB2PeriphClockCmd( RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOC|RCC_APB2Periph_AFIO,ENABLE );
-	//RCC_APB2Periph_AFIO IO功能复用AFIO 时钟 改变默认功能 恢复IO口功能
+		//RCC_APB2Periph_AFIO IO功能复用AFIO 时钟 改变默认功能 恢复IO口功能
     PWR_BackupAccessCmd( ENABLE );/* 允许修改RTC和后备寄存器*/
     RCC_LSEConfig( RCC_LSE_OFF ); /* 关闭外部低速时钟,PC14+PC15可以用作普通IO*/
     BKP_TamperPinCmd(DISABLE);  /* 关闭入侵检测功能,PC13可以用作普通IO*/
-	GPIO_PinRemapConfig(GPIO_Remap_SWJ_Disable, ENABLE);  //恢复PA13  PA14  PA15 IO功能，默认位jtag swd下载功能
+		GPIO_PinRemapConfig(GPIO_Remap_SWJ_Disable, ENABLE);  //恢复PA13  PA14  PA15 IO功能，默认位jtag swd下载功能
     GPIO_InitTypeDef GPIO_InitStructure;
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13 |GPIO_Pin_14 | GPIO_Pin_15;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
@@ -237,4 +237,11 @@ void PC_PA_13_14_15_Gpio(void)
     PWR_BackupAccessCmd(DISABLE);/* 禁止修改RTC和后备寄存器*/
     //BKP_ITConfig(DISABLE);       /* 禁止TAMPER 中断*/
 }
+
+/**
+	* @brief	书写一个按键消抖的中断延时函数
+  * @param  None
+  * @retval None
+  * @note 
+  */
 

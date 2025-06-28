@@ -629,6 +629,21 @@
               <FileType>1</FileType>
               <FilePath>..\User\matrix_keypad.c</FilePath>
             </File>
+            <File>
+              <FileName>test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\test.c</FilePath>
+            </File>
+            <File>
+              <FileName>mywdg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\mywdg.c</FilePath>
+            </File>
+            <File>
+              <FileName>w25q128.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\w25q128.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

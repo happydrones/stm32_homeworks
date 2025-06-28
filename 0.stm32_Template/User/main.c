@@ -33,7 +33,7 @@
 #include "timer.h"
 #include "adc.h"
 #include "encoder.h"
-
+#include "w25q128.h"
 
 uint16_t cnt;
 uint8_t  pwm=30;
@@ -43,31 +43,17 @@ uint16_t current_speed;
 int main(void)
 {
 	RCC_Configuration();
+    OLED0561_Init();
     USART1_Init(115200);
-	Lcd_1602_Init();
-	Display_Lcd_1602_Number(1,1,pwm,3);
-	PWM_GPIO_Init();
-	TIM2_PWM_Init(200 , 7200 , pwm);
-	TIM4_InputCapture_Init();
+	W25Q_Init();
 	Keypad_Init();
+    uint32_t jedec_id = W25Q_Read_JEDEC_ID();
+    OLED_DISPLAY_8x16(0,"JEDEC ID: ",8);
+    OLED_DISPLAY_8x16(0,jedec_id,8);
 	while(1)	
 	{
 		get_keypad_value = Key_Value;
 		Key_Value = 0;
-		if(4 == get_keypad_value )
-        {
-            pwm = (pwm + 1 > 100) ? 100 : pwm + 1;
-            Display_Lcd_1602_Number(1,1,pwm,3);
-            TIM_SetCompare1(TIM2, pwm);  // 更新 PWM
-        }
-        else if(12 == get_keypad_value )
-        {
-            pwm = (pwm -  1 < 0) ? 0 : pwm - 1;
-            Display_Lcd_1602_Number(1,1,pwm,3);
-            TIM_SetCompare1(TIM2, pwm);  // 更新 PWM
-        }
-       // current_speed = (ic_rise -ic_fall);
-        //Display_Lcd_1602_Number(2,1,current_speed,6);
 
 	}
 }
