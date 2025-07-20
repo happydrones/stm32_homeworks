@@ -37,4 +37,5 @@ build/
 !*.uvoptx
 !*.c
 !*.h
-
+#ignore J-Link download log files
+**/JLikLog.txt
