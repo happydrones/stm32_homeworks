@@ -570,11 +570,6 @@
               <FilePath>..\User\flash.c</FilePath>
             </File>
             <File>
-              <FileName>oled0561.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\User\oled0561.c</FilePath>
-            </File>
-            <File>
               <FileName>i2c.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\i2c.c</FilePath>
@@ -643,6 +638,21 @@
               <FileName>w25q128.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\w25q128.c</FilePath>
+            </File>
+            <File>
+              <FileName>seqlist.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\seqlist.c</FilePath>
+            </File>
+            <File>
+              <FileName>linkedlist.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\linkedlist.c</FilePath>
+            </File>
+            <File>
+              <FileName>oled0561.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\oled0561.c</FilePath>
             </File>
           </Files>
         </Group>

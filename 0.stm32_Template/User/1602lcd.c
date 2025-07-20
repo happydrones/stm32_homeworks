@@ -123,16 +123,16 @@ void Write_Data_Lcd_1602(u8 Data_Dat)
 }
 
 /**
-  * @brief  写入指令到1602液晶屏。
-  *         该函数在执行任何数据写入或读取操作之前调用。
-  *         如果1602液晶屏未连接，该函数将在判忙过程中陷入死循环。
-  * @param  Order_Dat: 要写入的一字节指令数据。
-  * @retval None
-  * @note   该函数首先检查液晶屏是否忙碌，然后设置相应的控制引脚以写入指令。
-  *         写入指令后，通过一个短暂的延迟来避免与TM1640总线复用时的冲突。
-  *         最后释放数据总线。
-  * @attention 确保在调用此函数之前已经正确初始化了液晶屏的GPIO端口。
-  */
+ * @brief  Write a command byte to the LCD1602 display.
+ * @param  Order_Dat: The 8-bit command to be written to the LCD1602.
+ * @retval None
+ * @note   This function writes a command byte to the LCD1602 instruction register.
+ *         Before writing, it checks the busy flag using LCD1602_IsBusy().
+ *         A delay is included to avoid conflicts with the TM1640, preventing 
+ *         the TM1640 brightness from automatically dimming due to bus sharing.
+ * @attention Ensure the LCD1602 data bus pins are properly initialized 
+ *            and configured before calling this function.
+ */
 void Write_Order_Lcd_1602(u8 Order_Dat)//1602液晶屏写指令函数
 {
 	LCD1602_IsBusy();  //1602液晶屏判忙函数   

@@ -31,13 +31,17 @@
 
 #pragma warn_unref_func- /* Disable 'unused function' warning */
 
-/* ------------------------------------------------------------------ */
-
-#elif defined(__GNUC__) && !defined(USE_HAL_DRIVER)  /* Check compiler */
-
-#pragma GCC diagnostic ignored "-Wunused-function" /* Disable 'unused function' warning */
 
 /* ------------------------------------------------------------------ */
+#elif defined(USE_STDPERIPH_DRIVER)
+	    #include "stm32f10x.h"
+
+    /* 既然我们在这个分支，就顺便把 Keil 编译器的警告也处理掉 */
+    /* Keil ARM Compiler V5 的预定义宏是 __CC_ARM */
+    #if defined(__CC_ARM)
+        #pragma diag_suppress 177 /* Disable 'unused function' warning for Keil */
+    #endif
+
 
 #elif defined(USE_HAL_DRIVER)  /* Check driver */
 
@@ -104,7 +108,7 @@
 
 /* ------------------------------------------------------------------ */
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Defines ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~ Defines ~~~~~~~~~~~~~~~~~~~~~ */
 /* ------------------------ Library ------------------------ */
 #define _PID_LIBRARY_VERSION    1.0.0
 
@@ -146,6 +150,12 @@
 		#define GetTime()   HAL_GetTick()
 
 	/* ------------------------------------------------------------------ */
+	 /* ！！！在此处为SPL添加GetTime的定义！！！ */
+    #elif defined(USE_STDPERIPH_DRIVER)
+        extern volatile uint32_t uwTick; // 声明外部全局变量
+        #define GetTime()   uwTick         // 将GetTime()定义为读取这个变量
+    /* ------------------------------------------------------------------ */
+
 
 	#else
 	#endif /* __CODEVISIONAVR__ */

@@ -22,28 +22,28 @@
 #include "i2c.h"
 
 
-static void I2C_GPIO_Init(void){ //I2C接口初始化
-	GPIO_InitTypeDef  GPIO_InitStructure; 	
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_GPIOC,ENABLE);       
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C1, ENABLE); 	//启动I2C功能 
-    GPIO_InitStructure.GPIO_Pin = I2C_SCL | I2C_SDA; 		//选择端口号                      
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_OD; 		//选择IO接口工作方式       
-    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; 		//设置IO接口速度（2/10/50MHz）    
-	GPIO_Init(I2CPORT, &GPIO_InitStructure);
-}
+// static void I2C_GPIO_Init(void){ //I2C接口初始化
+// 	GPIO_InitTypeDef  GPIO_InitStructure; 	
+//     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA|RCC_APB2Periph_GPIOB|RCC_APB2Periph_GPIOC,ENABLE);       
+// 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_I2C1, ENABLE); 	//启动I2C功能 
+//     GPIO_InitStructure.GPIO_Pin = I2C_SCL | I2C_SDA; 		//选择端口号                      
+//     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_OD; 		//选择IO接口工作方式       
+//     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; 		//设置IO接口速度（2/10/50MHz）    
+// 	GPIO_Init(I2CPORT, &GPIO_InitStructure);
+// }
 
-void I2C1_Configuration(void){ 								//I2C初始化
-	I2C_InitTypeDef  I2C_InitStructure;
-	I2C_GPIO_Init(); 										//先设置GPIO接口的状态
-	I2C_InitStructure.I2C_Mode = I2C_Mode_I2C;				//设置为I2C模式
-	I2C_InitStructure.I2C_DutyCycle = I2C_DutyCycle_2;
-	I2C_InitStructure.I2C_OwnAddress1 = HostAddress; 		//主机地址（从机不得用此地址）
-	I2C_InitStructure.I2C_Ack = I2C_Ack_Enable;				//允许应答
-	I2C_InitStructure.I2C_AcknowledgedAddress = I2C_AcknowledgedAddress_7bit; //7位地址模式
-	I2C_InitStructure.I2C_ClockSpeed = BusSpeed; 			//总线速度设置 	
-	I2C_Init(I2C1,&I2C_InitStructure);
-	I2C_Cmd(I2C1,ENABLE);									//开启I2C					
-}
+// void I2C1_Configuration(void){ 								//I2C初始化
+// 	I2C_InitTypeDef  I2C_InitStructure;
+// 	I2C_GPIO_Init(); 										//先设置GPIO接口的状态
+// 	I2C_InitStructure.I2C_Mode = I2C_Mode_I2C;				//设置为I2C模式
+// 	I2C_InitStructure.I2C_DutyCycle = I2C_DutyCycle_2;
+// 	I2C_InitStructure.I2C_OwnAddress1 = HostAddress; 		//主机地址（从机不得用此地址）
+// 	I2C_InitStructure.I2C_Ack = I2C_Ack_Enable;				//允许应答
+// 	I2C_InitStructure.I2C_AcknowledgedAddress = I2C_AcknowledgedAddress_7bit; //7位地址模式
+// 	I2C_InitStructure.I2C_ClockSpeed = BusSpeed; 			//总线速度设置 	
+// 	I2C_Init(I2C1,&I2C_InitStructure);
+// 	I2C_Cmd(I2C1,ENABLE);									//开启I2C					
+// }
 
 
 /**
@@ -82,7 +82,7 @@ void I2C_Sand_Buffer(u8 SlaveAddr,u8 WriteAddr,u8* pBuffer,u16 NumByteToWrite)
   *     @arg 
   * @retval 
   */
-void I2C_SAND_BYTE(u8 SlaveAddr,u8 writeAddr,u8 pBuffer){ //I2C发送一个字节（从地址，内部地址，内容）
+void I2C_Send_Byte(u8 SlaveAddr,u8 writeAddr,u8 pBuffer){ //I2C发送一个字节（从地址，内部地址，内容）
 	I2C_GenerateSTART(I2C1,ENABLE); //发送开始信号
 	while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT)); //等待完成	
 	I2C_Send7bitAddress(I2C1,SlaveAddr, I2C_Direction_Transmitter); //发送从器件地址及状态（写入）
@@ -93,7 +93,7 @@ void I2C_SAND_BYTE(u8 SlaveAddr,u8 writeAddr,u8 pBuffer){ //I2C发送一个字�
 	while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_BYTE_TRANSMITTED)); //等待完成	
 	I2C_GenerateSTOP(I2C1,ENABLE); //发送结束信号
 }
-void I2C_READ_BUFFER(u8 SlaveAddr,u8 readAddr,u8* pBuffer,u16 NumByteToRead){ //I2C读取数据串（器件地址，寄存器，内部地址，数量）
+void I2C_Read_Buffer(u8 SlaveAddr,u8 readAddr,u8* pBuffer,u16 NumByteToRead){ //I2C读取数据串（器件地址，寄存器，内部地址，数量）
 	while(I2C_GetFlagStatus(I2C1,I2C_FLAG_BUSY));
 	I2C_GenerateSTART(I2C1,ENABLE);//开启信号
 	while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT));	//清除 EV5
@@ -119,7 +119,7 @@ void I2C_READ_BUFFER(u8 SlaveAddr,u8 readAddr,u8* pBuffer,u16 NumByteToRead){ //
 	}
 	I2C_AcknowledgeConfig(I2C1,ENABLE);
 }
-u8 I2C_READ_BYTE(u8 SlaveAddr,u8 readAddr){ //I2C读取一个字节
+u8 I2C_Read_Byte(u8 SlaveAddr,u8 readAddr){ //I2C读取一个字节
 	u8 a;
 	while(I2C_GetFlagStatus(I2C1,I2C_FLAG_BUSY));
 	I2C_GenerateSTART(I2C1,ENABLE);

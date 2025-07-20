@@ -34,22 +34,63 @@
 #include "adc.h"
 #include "encoder.h"
 #include "w25q128.h"
+#include "stdlib.h"
 
+#define length 3
 uint16_t cnt;
 uint8_t  pwm=30;
 uint8_t  get_keypad_value;
 uint16_t current_speed;
+uint8_t  list[length];
+uint8_t  e =0;
+uint16_t p = 2;
+
+
 
 int main(void)
 {
 	RCC_Configuration();
-    OLED0561_Init();
-    USART1_Init(115200);
+    Oled0561_Init();
 	W25Q_Init();
 	Keypad_Init();
     uint32_t jedec_id = W25Q_Read_JEDEC_ID();
-    OLED_DISPLAY_8x16(0,"JEDEC ID: ",8);
-    OLED_DISPLAY_8x16(0,jedec_id,8);
+    Oled_Display_String_6X8(0,0,(u8 *)"JEDEC ID: ");
+	Oled_Display_String_6X8(1,5,(u8 *)"JEDEC ID: ");
+    Oled_display_number(2,0,jedec_id,FONT_SIZE_6x8);
+    srand(1234);
+
+    for (uint16_t i = 0; i < length; i++)
+    {
+        list[i] = rand()%256;
+    }
+    for (uint16_t i = 0; i < length; i++)
+    {
+        Oled_display_number(4,4*i,list[i],FONT_SIZE_6x8);
+        Delay_ms(1000);
+    }
+    
+//    e =list[p];
+//    for (uint16_t i =p; i < length; i++)
+//    {
+//        if (i ==length-1)
+//        {
+//            list[i] =0;
+//        }
+//        else
+//        {
+//            list[i] = list[i+1];
+//        }
+//        
+//    }
+//    for (uint16_t i = 0; i < length; i++)
+//    {
+//        
+//        Oled_display_integer(4,i,list[i]);
+//        Delay_ms(1000);
+//    }
+    
+
+
 	while(1)	
 	{
 		get_keypad_value = Key_Value;
@@ -72,3 +113,5 @@ float get_speed(uint16_t ic_rise, uint16_t ic_fall)
     speed = (ic_rise - ic_fall) * 1000.0 / 20.0;
 	return speed;
 }
+
+

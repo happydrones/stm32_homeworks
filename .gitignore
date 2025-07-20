@@ -23,6 +23,8 @@
 *.tmp
 
 #Listings / reports / debug output
+**/RTE/
+**/Objects/
 *.htm
 *.uvtmp
 *.uvguix.*
@@ -38,4 +40,4 @@ build/
 !*.c
 !*.h
 #ignore J-Link download log files
-**/JLikLog.txt
+**/JLinkLog.txt
