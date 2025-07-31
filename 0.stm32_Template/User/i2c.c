@@ -55,7 +55,7 @@
   *     @arg 
   * @retval 
   */
-void I2C_Sand_Buffer(u8 SlaveAddr,u8 WriteAddr,u8* pBuffer,u16 NumByteToWrite)
+void I2C_Send_Buffer(u8 SlaveAddr,u8 WriteAddr,u8* pBuffer,u16 NumByteToWrite)
 {
  	//I2C发送数据串（器件地址，寄存器，内部地址，数量）
 	I2C_GenerateSTART(I2C1,ENABLE);//产生起始位
