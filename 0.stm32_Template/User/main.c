@@ -19,22 +19,7 @@
   ******************************************************************************
   */
 
-#include "stm32f10x.h"   
-#include "delay.h"
-#include "pwm.h"
-#include "matrix_keypad.h"
-#include "led.h"
-#include "sys_config.h"
-#include "i2c.h"
-#include "oled0561.h"
-#include "usart.h"
-#include "1602lcd.h"
-#include "rtc.h"
-#include "timer.h"
-#include "adc.h"
-#include "encoder.h"
-#include "w25q128.h"
-#include "stdlib.h"
+#include "main.h"
 
 #define length 3
 uint16_t cnt;
@@ -53,19 +38,18 @@ int main(void)
     Oled0561_Init();
 	W25Q_Init();
 	Keypad_Init();
-    uint32_t jedec_id = W25Q_Read_JEDEC_ID();
-    Oled_Display_String_6X8(0,0,(u8 *)"JEDEC ID: ");
+	uint32_t jedec_id = W25Q_Read_JEDEC_ID();
+	Oled_Display_String_6X8(0,0,(u8 *)"JEDEC ID: ");
 	Oled_Display_String_6X8(1,5,(u8 *)"JEDEC ID: ");
-    Oled_display_number(2,0,jedec_id,FONT_SIZE_6x8);
-    srand(1234);
-
-    for (uint16_t i = 0; i < length; i++)
-    {
-        list[i] = rand()%256;
-    }
-    for (uint16_t i = 0; i < length; i++)
-    {
-        Oled_display_number(4,4*i,list[i],FONT_SIZE_6x8);
+	Oled_display_number(2,0,jedec_id,FONT_SIZE_6x8);
+	srand(1234);
+	for (uint16_t i = 0; i < length; i++)
+	{
+		list[i] = rand()%256;
+	}
+	for (uint16_t i = 0; i < length; i++)
+	{
+		Oled_display_number(4,4*i,list[i],FONT_SIZE_6x8);
         Delay_ms(1000);
     }
     
