@@ -58,7 +58,7 @@ void Oled0561_Init(void)
 
 }
 
-/**
+/**         Oled_Display_ON
  * @brief 	This function init the OLED0561 display.
  * @param 	None 
  * @return 	None 
@@ -86,7 +86,7 @@ void Oled_Display_ON (void)
 	0xa6,					//0xa6:正常显示，0xa7:反色显示
 	0xaf					//0xae:关显示，0xaf:开显示
 	}; 						//
-	I2C_Sand_Buffer(OLED_I2C_ADDRESS,OLED_CONTROL_BYTE_CMD,buf,28);
+	I2C_Send_Buffer(OLED_I2C_ADDRESS,OLED_CONTROL_BYTE_CMD,buf,28);
 }
 
 
@@ -103,7 +103,7 @@ void Oled_Display_OFF (void)
 		0xae,                            //0xae:show off，0xaf:show on
 		0x8d,0x10,                       //VCC电源
 		}; 
-	I2C_Sand_Buffer(OLED_I2C_ADDRESS,OLED_CONTROL_BYTE_CMD,buf,3);
+	I2C_Send_Buffer(OLED_I2C_ADDRESS,OLED_CONTROL_BYTE_CMD,buf,3);
 }
 
 /**
@@ -118,27 +118,33 @@ void OLED_Set_Brightness(uint8_t brightness)
 }
 
 /**
+  * @brief  This function is used to set the cursor position.
+  * @param  row :
+  * @param  column :
+  * @retval None
+  */
+void OLED_SetPos(uint8_t row,uint8_t column) 
+{
+    uint8_t data_buffer_temp[] =  {0xB0+row,((column&0xF0)>>4)|0x10,(column&0x0F)|0x00};//{设置Y位置,设置X位置高4位,设置X位置低4位}
+    I2C_Send_Buffer(OLED_I2C_ADDRESS,OLED_CONTROL_BYTE_CMD,data_buffer_temp,3);
+}
+ 
+
+/**
  * @brief Clear the OLED display.
  * @param None
  * @note  This function clears the OLED display by 
  * 		sending the command to the SH1106 controller.
  */
 void Oled_Display_Clear(void)
-{                 
+{   
+    uint8_t Oled_clear_data[128]={0};
+    memset(Oled_clear_data,CLEAR_BYTE,128);              
 	for(uint8_t page = OLED_CMD_SET_PAGE_START;page < 0xB8;page++)
-	{	                     
-		I2C_Send_Byte(OLED_I2C_ADDRESS,OLED_CONTROL_BYTE_CMD,page); 	     //页地址（从0xB0到0xB7）
-		//send the hight four bits of address （0x0001 0000）
-		//                                            (high)
-		I2C_Send_Byte(OLED_I2C_ADDRESS,OLED_CONTROL_BYTE_CMD,0x10);    
-		//send the low four bits of address (0x0000 0000)
-		//                                          (low )
-		I2C_Send_Byte(OLED_I2C_ADDRESS,OLED_CONTROL_BYTE_CMD,0x00);	
+	{
+        OLED_SetPos( page,SH1106_COLUMN_OFFSET);
 		// write the data 0x00 to clear the screen
-		for(uint8_t j=0;j<132;j++)
-		{	                               
- 			I2C_Send_Byte(OLED_I2C_ADDRESS,OLED_CONTROL_BYTE_DATA,0x00);
-		}
+		I2C_Send_Buffer(OLED_I2C_ADDRESS,OLED_CONTROL_BYTE_DATA,Oled_clear_data,128);
 	}
 }
 

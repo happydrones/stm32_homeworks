@@ -51,8 +51,8 @@ typedef enum {
 /** @defgroup OLED_I2C_Parameters
   * @{
 ***/
-#define OLED_I2C_ADDRESS			0x78    /**< OLED I2C slave address */
-#define OLED_CONTROL_BYTE_CMD		0x00    /**< Control byte for sending a command */
+#define OLED_I2C_ADDRESS			    0x78    /**< OLED I2C slave address */
+#define OLED_CONTROL_BYTE_CMD		  0x00    /**< Control byte for sending a command */
 #define OLED_CONTROL_BYTE_DATA 		0x40    /**< Control byte for sending data */
 /**
   * @}
@@ -100,14 +100,15 @@ typedef enum {
   */
  #ifndef ASCII_START_CHAR
  #define ASCII_START_CHAR           ' '
+ #define CLEAR_BYTE                 0x00
  #endif
-
 
 void Oled0561_Init(void);      
 void Oled_Display_ON (void);    //OLED屏开显示
 void Oled_Display_OFF (void);   //OLED屏关显示
 void Oled_Display_Clear(void);  //清屏操作
 void OLED_Set_Brightness(u8 brightness);   //OLED屏亮度设置（0~255）
+void OLED_SetPos(uint8_t row,uint8_t column);
 void OLED_DisplayChar6x8(uint8_t row, uint8_t column, char character);
 void OLED_DisplayChar8x16(uint8_t page, uint8_t column, char character);//显示8x16的单个字符 
 void Oled_Display_String_6X8(u8 row, u8 column, u8 *str);
