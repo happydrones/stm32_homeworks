@@ -25,8 +25,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x.h"
 #include <stdlib.h>
-#include <stdint.h>
-#include <stdbool.h>
 
 /* Define --------------------------------------------------------------------*/
 #define MAX_NODE_NUM 1000000 // Maximum number of nodes in the linked list
@@ -37,40 +35,45 @@ typedef int DataType_t;
 
 /* Structures ----------------------------------------------------------------*/
 
-/**
- * @struct Node
- * @brief Represents a single node in a singly linked list.
- * Each node contains an DataType_t data payload and a pointer to the
- * next node in the sequence.
- */
+
+
+/** 
+  * @brief  Single linked list node structure definition
+  */
 typedef struct _SINGLE_LINKED_LIST
 {
 	DataType_t* Data;
     struct _SINGLE_LINKED_LIST* next;
 
 }SLList_t;
+/**
+  * @}
+  */    
 
+/** 
+  * @brief  Double linked list node structure definition
+  */
 typedef struct _DOUBLE_LINKED_LIST
 {
     DataType_t* Data;
-    struct DLList_t* head;
-    struct DLList_t* tail;
+    struct _DOUBLE_LINKED_LIST* prev;
+    struct _DOUBLE_LINKED_LIST* next;
 
 }DLList_t;
+/**
+  * @}
+  */    
 
-/* Function prototypes -------------------------------------------------------*/
-SLList_t* single_linked_list_create(void);
-void init_double_linked_list(DLList_t* list);
-SLList_t* Single_Linked_List_Node_create(DataType_t* data);
+/** @defgroup Single_Linked_List_Exported_Functions
+  * @{
+  */
+SLList_t*   Single_Linked_List_create(void);
+SLList_t*   Single_Linked_List_Node_create(DataType_t* data);
+SLList_t* create_list_from_array( DataType_t* const* arr, int size);
+ErrorStatus Single_Linked_List_append(SLList_t* list, DataType_t* data);
+ErrorStatus Single_Linked_List_insert(SLList_t*  list, DataType_t* data, uint32_t index);
+ErrorStatus Single_Linked_List_remove (SLList_t* list, DataType_t* node_value);
 
-bool append_single_linked_list(SLList_t* list, DataType_t* data);
-void append_double_linked_list(DLList_t* list, DataType_t* data);
-
-bool insert_single_linked_list(SLList_t*  list, DataType_t* data, uint32_t index);
-void insert_double_linked_list(DLList_t* list, DataType_t* data, uint32_t index);
-
-void remove_single_linked_list(SLList_t* list, uint32_t index);
-void remove_double_linked_list(DLList_t* list, uint32_t index);
 
 DataType_t* get_single_linked_list(SLList_t* list, uint32_t index);
 DataType_t* get_double_linked_list(DLList_t* list, uint32_t index);
@@ -79,7 +82,25 @@ uint32_t get_single_linked_list_size(SLList_t* list);
 uint32_t get_double_linked_list_size(DLList_t* list);
 
 void clear_single_linked_list(SLList_t* list);
-void clear_double_linked_list(DLList_t* list);     
+void clear_double_linked_list(DLList_t* list);
+/**
+  * @}
+  */     
+
+
+
+/** @defgroup Double_Linked_List_Exported_Functions
+  * @{
+  */
+DLList_t*   Double_linked_list_create(void);
+DLList_t*   Double_Linked_List_Node_create(DataType_t* data);
+DLList_t*   Double_Linked_List_create_from_array( DataType_t* const* arr, int size);
+ErrorStatus Double_Linked_list_append(DLList_t* Dllist, DataType_t* data);
+ErrorStatus Double_Linked_list_insert(DLList_t* Dllist, DataType_t* data, uint32_t index);
+ErrorStatus Double_Linked_List_remove(DLList_t* Dllist, int32_t index);
+/**
+  * @}
+  */
 
 /* End of file -*/  
 #endif /* __LINKEDLIST_H__ */
