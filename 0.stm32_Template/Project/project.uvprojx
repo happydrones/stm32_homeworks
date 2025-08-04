@@ -654,6 +654,11 @@
               <FileType>1</FileType>
               <FilePath>..\User\oled0561.c</FilePath>
             </File>
+            <File>
+              <FileName>stack.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\stack.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

@@ -18,5 +18,6 @@
 #include "encoder.h"
 #include "w25q128.h"
 #include "stdlib.h"
+#include "stack.h"
 
 #endif
